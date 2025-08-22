@@ -9,9 +9,16 @@ function Homepage() {
     { id: 4, title: "Madagascar", release_date: "2005" },
     { id: 5, title: "Sherlock Holmes", release_date: "2017" },
   ];
+
+  function handleSearch(){
+
+  }
   
   return (
     <div className="Home">
+      <form onsubmit = {handleSearch} classname = "search-form">
+        <imput type = "text" placeholder = "Search for movies" classsName = "search=input"/>
+      </form>
       <div className="movies-grid">
         {movies.map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
