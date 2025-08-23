@@ -1,4 +1,5 @@
 import MovieCard from './components/MovieCard'
+import Navbar from './components/Navbar';
 import Favorites from './pages/Favorite';
 import Homepage from './pages/Home';
 import {Routes, Route} from "react-router-dom"
@@ -8,6 +9,7 @@ function App() {
   
   return( 
   <>
+  <Navbar/>
   <main className='main-content'>
     <Routes>
       <Route path="/" element = {<Homepage/>}/>
