@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Favorites from './pages/Favorite';
 import Homepage from './pages/Home';
 import {Routes, Route} from "react-router-dom"
-import './App.css'
+import './css/App.css'
 
 function App() {
   
