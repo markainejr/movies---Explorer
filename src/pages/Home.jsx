@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { tSearchMovies, getPopularMovies } from "../services/api";
 import MovieCard from "../components/MovieCard";
 import "../css/Home.css"
 
