@@ -18,7 +18,7 @@ return (
     </div>
     <div className = "movie-info"></div>
     <h3>{movie.title}</h3>
-    <p>{movie.release}</p>
+    <p>{movie.release_date}</p>
 
   </div>
 )
