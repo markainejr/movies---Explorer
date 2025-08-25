@@ -1,18 +1,30 @@
 import React from "react";
-import { useState } from "react";
-import { tSearchMovies, getPopularMovies } from "../services/api";
+import { useState, useEffect } from "react";
+import {searchMovies, getPopularMovies } from "../services/api";
 import MovieCard from "../components/MovieCard";
 import "../css/Home.css"
 
 function Homepage() {
   const [searchQuery, setSearchQuery] = useState(""); 
-  const movies = [
-    { id: 1, title: "John Wick", release_date: "2020" },
-    { id: 2, title: "Twilight", release_date: "2012" },
-    { id: 3, title: "Bean", release_date: "1997" },
-    { id: 4, title: "Madagascar", release_date: "2005" },
-    { id: 5, title: "Sherlock Holmes", release_date: "2017" },
-  ];
+ const [movies, setMovies] = useState([]);
+ const [error, setError] = useState(null)
+ const [loading, setLoading]= useState(true)
+useEffect(() =>{
+  const loadPopularMovies = async () =>{
+    try{
+      const popularMovies = await getPopularMovies()
+      setMovies(popularMovies)
+    } catch(err){
+      console.log(err)
+      setError("failed to load movie..")
+    }
+    finally{ 
+      setLoading(false)
+    }
+  }
+  
+  loadPopularMovies()
+ }, [])
 
   function handleSearch(e){
     e.preventDefault();
@@ -23,11 +35,11 @@ function Homepage() {
   
   return (
     <div className="Home">
-      <form onSubmit = {handleSearch} classname = "search-form">
+      <form onSubmit = {handleSearch} className = "search-form">
         <input type = "text" placeholder = "Search for movies" className = "search-input" value = {searchQuery}
          onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <button type = "onSubmit" classNmae ="search-btn"> Search</button>
+        <button type = "onSubmit" className ="search-btn"> Search</button>
       </form>
       
       <div className="movies-grid">
