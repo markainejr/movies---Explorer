@@ -18,7 +18,7 @@ return (
     </div>
     <div className = "movie-info"></div>
     <h3>{movie.title}</h3>
-    <p>{movie.release_date}</p>
+    <p>{movie.release_date?.split("-")[0]}</p>
 
   </div>
 )
@@ -26,3 +26,5 @@ return (
 
 
 export default MovieCard;
+
+// <p>{movie.release_date?.split("-")[0]}</p> made to display only the year
